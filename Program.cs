@@ -6,6 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddTransient<JsonFileService>();
 
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

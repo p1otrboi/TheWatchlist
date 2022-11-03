@@ -2,7 +2,11 @@
 @model IndexModel
 @{
 }
-@foreach (var item in Model.Movies)
-{
-    @item.Title
-}
+<h1>Add a movie to your Watchlist</h1>
+
+<form>
+    <p>
+        Search: <input type="text" asp-for="SearchString" />
+        <input type="submit" value="Submit" />
+    </p>
+</form>

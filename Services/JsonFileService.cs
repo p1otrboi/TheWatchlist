@@ -1,7 +1,5 @@
-﻿using System.Net;
-using System.Text;
+﻿using System.Text;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 using TheWatchlist.Models;
 
 namespace TheWatchlist.Services
@@ -28,6 +26,57 @@ namespace TheWatchlist.Services
                     });
             }
         }
+
+        public IEnumerable<Movie> GetSearchedMovie()
+        {
+            using (var jsonFileReader = File.OpenText("./wwwroot/data/search.json"))
+            {
+                return JsonSerializer.Deserialize<Movie[]>(jsonFileReader.ReadToEnd(),
+                    new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = true
+                    });
+            }
+        }
+        public void AddSearchedMovie()
+        {
+            var movie = GetSearchedMovie();
+            
+            using (var outputStream = File.OpenWrite(JsonFileName))
+            {
+                JsonSerializer.Serialize<IEnumerable<Movie>>(
+                    new Utf8JsonWriter(outputStream, new JsonWriterOptions
+                    {
+                        SkipValidation = true,
+                        Indented = true
+                    }),
+                    movie
+                    );
+            }
+        }
+        public static async Task SearchMovie(string searchphrase)
+        {
+            string apiKey = "947a6562";
+            string baseUri = $"http://www.omdbapi.com/?apikey={apiKey}";
+
+            string name = searchphrase;
+            string type = "movie";
+            var json = string.Empty;
+
+            var sb = new StringBuilder(baseUri);
+            sb.Append($"&t={name}");
+            sb.Append($"&type={type}");
+
+            using (var client = new HttpClient())
+            {
+                var endpoint = new Uri(sb.ToString());
+                var result = client.GetAsync(endpoint).Result;
+                json = result.Content.ReadAsStringAsync().Result;
+            }
+            await File.WriteAllTextAsync("./wwwroot/data/search.json", json);
+        }
+
+
     }
 }
 
