@@ -1,13 +1,27 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "The Watchlist";
+    ViewData["Title"] = "Home";
 }
 <script src="https://kit.fontawesome.com/8cafc277ac.js" crossorigin="anonymous"></script>
 
-<div class=d-inline-block>
-    <h1>The Watchlist</h1>
+<div class="flex-container">
+	@foreach (var item in Model.Movies)
+	{
+		<div class="card movie_card">
+			<img src="@item.Poster" class="card-img-top" alt="@item.Title">
+			<div class="card-body">
+				<i class="fas fa-play play_button" data-toggle="tooltip" data-placement="bottom" title="Play Trailer"></i>
+				<h5 class="card-title">@item.Title</h5>
+				<span class="movie_info">@item.Year</span>
+				<span class="movie_info float-right"><i class="fa-brands fa-imdb"></i>@item.imdbRating</span>
+			</div>
+		</div>
+	}
 </div>
+
+
+
 
 
 
