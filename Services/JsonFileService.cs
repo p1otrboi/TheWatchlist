@@ -17,7 +17,7 @@ namespace TheWatchlist.Services
 
         private string JsonFileName => Path.Combine(WebHostEnvironment.WebRootPath, "data", "movies.json");
 
-        public IEnumerable<Movie> GetMovies()
+        public IEnumerable<Movie> GetMovies() // Hämtar en object-list av alla filmer sparade i movies.json
         {
             using (var jsonFileReader = File.OpenText(JsonFileName))
             {
@@ -28,13 +28,12 @@ namespace TheWatchlist.Services
                     });
             }
         }
-        public IEnumerable<Movie> GetSearchedMovie()
+        public IEnumerable<Movie> GetSearchedMovie() // Skriver API-responsen från OMDb till search.json
         {
             var data = "[" + File.ReadAllText(@"./wwwroot/data/search.json") + "]";
             return JsonSerializer.Deserialize<Movie[]>(data);  
         }
-        
-        public void AddSearchedMovie()
+        public void AddSearchedMovie() // Hämtar movie-object från movies.json och search.json - sen lägger ihop dem och sparar till movies.json
         {
             var movies = GetMovies();
             var movie = GetSearchedMovie();
@@ -54,7 +53,7 @@ namespace TheWatchlist.Services
                     );
             }
         }
-        public static async Task SearchMovie(string searchphrase)
+        public static async Task SearchMovie(string searchphrase)  // Söker på en film genom http request på OMDb-api, och sparar responsen i search.json 
         {
             string apiKey = "947a6562";
             string baseUri = $"http://www.omdbapi.com/?apikey={apiKey}";
@@ -75,7 +74,26 @@ namespace TheWatchlist.Services
             }
             await File.WriteAllTextAsync("./wwwroot/data/search.json", json);
         }
-
+        public void SeenMovie(string movieTitle) // Toggle mellan Seen/Not seen
+        {
+            var movies = GetMovies();
+            var query = movies.First(x => x.Title == movieTitle);
+            if (query.Seen == false)
+                query.Seen = true; 
+            else
+                query.Seen = false;
+            using (var outputStream = File.OpenWrite(JsonFileName))
+            {
+                JsonSerializer.Serialize<IEnumerable<Movie>>(
+                    new Utf8JsonWriter(outputStream, new JsonWriterOptions
+                    {
+                        SkipValidation = true,
+                        Indented = true
+                    }),
+                    movies
+                    );
+            }
+        }
 
     }
 }
