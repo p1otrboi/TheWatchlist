@@ -1,6 +1,8 @@
 ﻿using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using TheWatchlist.Models;
+using System.Linq;
 
 namespace TheWatchlist.Services
 {
@@ -26,21 +28,19 @@ namespace TheWatchlist.Services
                     });
             }
         }
-
         public IEnumerable<Movie> GetSearchedMovie()
         {
-            using (var jsonFileReader = File.OpenText("./wwwroot/data/search.json"))
-            {
-                return JsonSerializer.Deserialize<Movie[]>(jsonFileReader.ReadToEnd(),
-                    new JsonSerializerOptions
-                    {
-                        PropertyNameCaseInsensitive = true
-                    });
-            }
+            var data = "[" + File.ReadAllText(@"./wwwroot/data/search.json") + "]";
+            return JsonSerializer.Deserialize<Movie[]>(data);  
         }
+        
         public void AddSearchedMovie()
         {
+            var movies = GetMovies();
             var movie = GetSearchedMovie();
+            var together = movie.Concat(movies);
+            
+            
             
             using (var outputStream = File.OpenWrite(JsonFileName))
             {
@@ -50,7 +50,7 @@ namespace TheWatchlist.Services
                         SkipValidation = true,
                         Indented = true
                     }),
-                    movie
+                    together
                     );
             }
         }
