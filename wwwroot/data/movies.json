@@ -1,0 +1,108 @@
+[
+  {
+    "Title": "Guardians of the Galaxy Vol. 2",
+    "Year": "2017",
+    "Rated": "PG-13",
+    "Released": "05 May 2017",
+    "Runtime": "136 min",
+    "Genre": "Action, Adventure, Comedy",
+    "Director": "James Gunn",
+    "Writer": "James Gunn, Dan Abnett, Andy Lanning",
+    "Actors": "Chris Pratt, Zoe Saldana, Dave Bautista",
+    "Plot": "The Guardians struggle to keep together as a team while dealing with their personal family issues, notably Star-Lord's encounter with his father the ambitious celestial being Ego.",
+    "Language": "English",
+    "Country": "United States",
+    "Awards": "Nominated for 1 Oscar. 15 wins & 59 nominations total",
+    "Poster": "https://m.media-amazon.com/images/M/MV5BNjM0NTc0NzItM2FlYS00YzEwLWE0YmUtNTA2ZWIzODc2OTgxXkEyXkFqcGdeQXVyNTgwNzIyNzg@._V1_SX300.jpg",
+    "Metascore": "67",
+    "imdbRating": "7.6",
+    "imdbVotes": "674,085",
+    "imdbID": "tt3896198",
+    "Type": "movie",
+    "DVD": "22 Aug 2017",
+    "BoxOffice": "$389,813,101",
+    "Production": "N/A",
+    "Website": "N/A",
+    "Response": "True"
+  },
+  {
+    "Title": "Top Gun: Maverick",
+    "Year": "2022",
+    "Rated": "PG-13",
+    "Released": "27 May 2022",
+    "Runtime": "130 min",
+    "Genre": "Action, Drama",
+    "Director": "Joseph Kosinski",
+    "Writer": "Jim Cash, Jack Epps Jr., Peter Craig",
+    "Actors": "Tom Cruise, Jennifer Connelly, Miles Teller",
+    "Plot": "After thirty years, Maverick is still pushing the envelope as a top naval aviator, but must confront ghosts of his past when he leads TOP GUN's elite graduates on a mission that demands the ultimate sacrifice from those chosen to ...",
+    "Language": "English",
+    "Country": "United States",
+    "Awards": "2 wins & 9 nominations",
+    "Poster": "https://m.media-amazon.com/images/M/MV5BZWYzOGEwNTgtNWU3NS00ZTQ0LWJkODUtMmVhMjIwMjA1ZmQwXkEyXkFqcGdeQXVyMjkwOTAyMDU@._V1_SX300.jpg",
+    "Ratings": [
+      {
+        "Source": "Internet Movie Database",
+        "Value": "8.4/10"
+      },
+      {
+        "Source": "Rotten Tomatoes",
+        "Value": "96%"
+      },
+      {
+        "Source": "Metacritic",
+        "Value": "78/100"
+      }
+    ],
+    "Metascore": "78",
+    "imdbRating": "8.4",
+    "imdbVotes": "412,557",
+    "imdbID": "tt1745960",
+    "Type": "movie",
+    "DVD": "N/A",
+    "BoxOffice": "$716,498,761",
+    "Production": "N/A",
+    "Website": "N/A",
+    "Response": "True"
+  },
+  {
+    "Title": "Lord of War",
+    "Year": "2005",
+    "Rated": "R",
+    "Released": "16 Sep 2005",
+    "Runtime": "122 min",
+    "Genre": "Crime, Drama",
+    "Director": "Andrew Niccol",
+    "Writer": "Andrew Niccol",
+    "Actors": "Nicolas Cage, Ethan Hawke, Jared Leto",
+    "Plot": "An arms dealer confronts the morality of his work as he is being chased by an INTERPOL Agent.",
+    "Language": "English, Ukrainian, German, Spanish, Russian, French, Arabic, Turkish",
+    "Country": "France, Germany, United States",
+    "Awards": "2 wins & 3 nominations",
+    "Poster": "https://m.media-amazon.com/images/M/MV5BMTYzZWE3MDAtZjZkMi00MzhlLTlhZDUtNmI2Zjg3OWVlZWI0XkEyXkFqcGdeQXVyNDk3NzU2MTQ@._V1_SX300.jpg",
+    "Ratings": [
+      {
+        "Source": "Internet Movie Database",
+        "Value": "7.6/10"
+      },
+      {
+        "Source": "Rotten Tomatoes",
+        "Value": "61%"
+      },
+      {
+        "Source": "Metacritic",
+        "Value": "62/100"
+      }
+    ],
+    "Metascore": "62",
+    "imdbRating": "7.6",
+    "imdbVotes": "317,636",
+    "imdbID": "tt0399295",
+    "Type": "movie",
+    "DVD": "17 Jan 2006",
+    "BoxOffice": "$24,149,632",
+    "Production": "N/A",
+    "Website": "N/A",
+    "Response": "True"
+  }
+]
