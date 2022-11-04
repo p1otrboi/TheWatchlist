@@ -26,7 +26,15 @@ namespace TheWatchlist.Pages.Movies
                 await JsonFileService.SearchMovie(SearchString);
             }
             await Task.Delay(200);
-            Movie = MovieService.GetSearchedMovie();
+            try
+            {
+                Movie = MovieService.GetSearchedMovie();
+            }
+            catch
+            {
+                Movie = MovieService.GetMovies();
+            }
+            
         }
         public void OnPost()
         {

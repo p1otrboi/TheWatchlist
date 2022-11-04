@@ -60,11 +60,13 @@ namespace TheWatchlist.Services
 
             string name = searchphrase;
             string type = "movie";
+            string plot = "full";
             var json = string.Empty;
 
             var sb = new StringBuilder(baseUri);
             sb.Append($"&t={name}");
             sb.Append($"&type={type}");
+            sb.Append($"&plot={plot}");
 
             using (var client = new HttpClient())
             {
@@ -94,6 +96,10 @@ namespace TheWatchlist.Services
                     movies
                     );
             }
+        }
+        public void DeleteSearchedMovie()
+        {
+            File.Delete("./wwwroot/data/search.json");
         }
 
     }
