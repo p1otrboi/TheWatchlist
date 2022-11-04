@@ -82,12 +82,13 @@ namespace TheWatchlist.Services
                 query.Seen = true; 
             else
                 query.Seen = false;
+            File.Delete(JsonFileName);
             using (var outputStream = File.OpenWrite(JsonFileName))
             {
                 JsonSerializer.Serialize<IEnumerable<Movie>>(
                     new Utf8JsonWriter(outputStream, new JsonWriterOptions
                     {
-                        SkipValidation = true,
+                        SkipValidation = false,
                         Indented = true
                     }),
                     movies

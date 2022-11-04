@@ -23,6 +23,8 @@ namespace TheWatchlist.Pages
         }
         public void OnPost()
         {
+            var seen = Request.Form["Seen"];
+            MovieService.SeenMovie(seen);
             Movies = MovieService.GetMovies();
         }
     }

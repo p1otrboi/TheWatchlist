@@ -1,5 +1,32 @@
 [
   {
+    "Title": "Toy Story",
+    "Year": "1995",
+    "Rated": "G",
+    "Released": "22 Nov 1995",
+    "Runtime": "81 min",
+    "Genre": "Animation, Adventure, Comedy",
+    "Director": "John Lasseter",
+    "Writer": "John Lasseter, Pete Docter, Andrew Stanton",
+    "Actors": "Tom Hanks, Tim Allen, Don Rickles",
+    "Plot": "A cowboy doll is profoundly threatened and jealous when a new spaceman action figure supplants him as top toy in a boy\u0027s bedroom.",
+    "Language": "English",
+    "Country": "United States",
+    "Awards": "Nominated for 3 Oscars. 28 wins \u0026 23 nominations total",
+    "Poster": "https://m.media-amazon.com/images/M/MV5BMDU2ZWJlMjktMTRhMy00ZTA5LWEzNDgtYmNmZTEwZTViZWJkXkEyXkFqcGdeQXVyNDQ2OTk4MzI@._V1_SX300.jpg",
+    "Metascore": "95",
+    "imdbRating": "8.3",
+    "imdbVotes": "987,287",
+    "imdbID": "tt0114709",
+    "Type": "movie",
+    "DVD": "23 Mar 2010",
+    "BoxOffice": "$223,225,679",
+    "Production": "N/A",
+    "Website": "N/A",
+    "Response": "True",
+    "Seen": false
+  },
+  {
     "Title": "The Lord of the Rings: The Fellowship of the Ring",
     "Year": "2001",
     "Rated": "PG-13",
@@ -78,6 +105,6 @@
     "Production": "N/A",
     "Website": "N/A",
     "Response": "True",
-    "Seen": false
+    "Seen": true
   }
 ]

@@ -19,7 +19,9 @@
 			<div class="flex-container">
 				@if (item.Seen == true)
 				{
-					<button type="button" class="btn btn-success">Seen</button>
+					<form method="post">
+						<button class="btn btn-success" id="@item.Title" type="submit" name="Seen" value="@item.Title">Seen</button>
+					</form>
 				}
 				else
 				{
