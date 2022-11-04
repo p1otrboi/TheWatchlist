@@ -29,7 +29,7 @@
 						<span class="movie_info">@item.Year</span>
 						<span class="movie_info float-right"><i class="fa-brands fa-imdb"></i>@item.imdbRating</span>
 						<form method="post">
-							<input type="submit" class="btn btn-secondary" value="Add to Watchlist" />
+							<input type="submit" class="btn btn-secondary" value="Add to Watchlist" asp-page-handler="AddToWatchlist" />
 						</form>
 					</div>
 				</div>
@@ -68,16 +68,18 @@
 					@if (item.Seen == true)
 					{
 						<form method="post">
-							<button class="btn btn-success" id="@item.Title" type="submit" name="Seen" value="@item.Title">Seen</button>
+							<button class="btn btn-success" id="@item.Title" type="submit" name="Seen" value="@item.Title" asp-page-handler="Seen">Seen</button>
 						</form>
 					}
 					else
 					{
 						<form method="post">
-							<button class="btn btn-secondary" id="@item.Title" type="submit" name="Seen" value="@item.Title">Mark as seen</button>
+							<button class="btn btn-secondary" id="toggleseen" type="submit" name="Seen" value="@item.Title" asp-page-handler="Seen">Mark as seen</button>
 						</form>
 					}
-					<button type="button" class="btn btn-danger">Delete</button>
+					<form method="post">
+						<button class="btn btn-danger" id="delete" type="submit" name="Delete" value="@item.Title" asp-page-handler="Delete">Delete</button>
+					</form>
 				</div>
 			</div>
 		}

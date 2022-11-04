@@ -14,7 +14,9 @@ namespace TheWatchlist.Pages.Movies
         [BindProperty(SupportsGet = true)]
         public string ? SearchString { get; set; }
 
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         public IndexModel(ILogger<IndexModel> logger, JsonFileService movieService)
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
             _logger = logger;
             MovieService = movieService;

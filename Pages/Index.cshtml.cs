@@ -15,7 +15,9 @@ namespace TheWatchlist.Pages
         [BindProperty(SupportsGet = true)]
         public string? SearchString { get; set; }
 
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         public IndexModel(ILogger<IndexModel> logger, JsonFileService movieService)
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         {
             _logger = logger;
             MovieService = movieService;
@@ -32,25 +34,22 @@ namespace TheWatchlist.Pages
                 SearchedMovie = MovieService.GetSearchedMovie();
             }
         }
-
-        /*public void OnGet()
+        public void OnPostSeen()
         {
-            Movies = MovieService.GetMovies();
-        }*/
-        public async void OnPost()
-        {
-            try
-            {
                 var seen = Request.Form["Seen"];
                 MovieService.SeenMovie(seen);
-                Movies = MovieService.GetMovies();
-            }
-            catch
-            {
-                MovieService.AddSearchedMovie();
-                Movies = MovieService.GetSearchedMovie();
-                await OnGetAsync();
-            } 
+                Movies = MovieService.GetMovies(); 
+        }
+        public void OnPostDelete()
+        {
+            var delete = Request.Form["Delete"];
+            MovieService.DeleteMovie(delete);
+            Movies = MovieService.GetMovies();
+        }
+        public void OnPostAddToWatchList()
+        {
+            MovieService.AddSearchedMovie();
+            Movies = MovieService.GetMovies();
         }
     }
 }

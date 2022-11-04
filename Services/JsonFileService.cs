@@ -3,6 +3,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using TheWatchlist.Models;
 using System.Linq;
+using System.Diagnostics.CodeAnalysis;
 
 namespace TheWatchlist.Services
 {
@@ -21,13 +22,16 @@ namespace TheWatchlist.Services
         {
             using (var jsonFileReader = File.OpenText(JsonFileName))
             {
+#pragma warning disable CS8603 // Possible null reference return.
                 return JsonSerializer.Deserialize<Movie[]>(jsonFileReader.ReadToEnd(),
                     new JsonSerializerOptions
                     {
                         PropertyNameCaseInsensitive = true
                     });
+#pragma warning restore CS8603 // Possible null reference return.
             }
         }
+        
         public IEnumerable<Movie> GetSearchedMovie() // Skriver API-responsen från OMDb till search.json
         {
             var data = "[" + File.ReadAllText(@"./wwwroot/data/search.json") + "]";
@@ -38,9 +42,7 @@ namespace TheWatchlist.Services
             var movies = GetMovies();
             var movie = GetSearchedMovie();
             var together = movie.Concat(movies);
-            
-            
-            
+
             using (var outputStream = File.OpenWrite(JsonFileName))
             {
                 JsonSerializer.Serialize<IEnumerable<Movie>>(
@@ -94,6 +96,26 @@ namespace TheWatchlist.Services
                         Indented = true
                     }),
                     movies
+                    );
+            }
+        }
+
+        public void DeleteMovie(string movieTitle) // Tar bort en film ur databasen(movies.json)
+        {
+            var movies = GetMovies().ToList();
+            var query = movies.First(x => x.Title == movieTitle);
+            movies.Remove(query);
+            var moviesArray = movies.ToArray();
+            File.Delete(JsonFileName);
+            using (var outputStream = File.OpenWrite(JsonFileName))
+            {
+                JsonSerializer.Serialize<IEnumerable<Movie>>(
+                    new Utf8JsonWriter(outputStream, new JsonWriterOptions
+                    {
+                        SkipValidation = false,
+                        Indented = true
+                    }),
+                    moviesArray
                     );
             }
         }
