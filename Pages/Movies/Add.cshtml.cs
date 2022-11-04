@@ -32,7 +32,6 @@ namespace TheWatchlist.Pages.Movies
         {
             MovieService.AddSearchedMovie();
             Movie = MovieService.GetSearchedMovie();
-            Redirect("./Index");
         }
     }
 }

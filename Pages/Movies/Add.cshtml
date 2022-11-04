@@ -9,23 +9,30 @@
     <form method="get">
         <p>
             <input type="text" asp-for="SearchString" />
-            <input type="submit" value="Search" />
+			<input type="submit" class="btn btn-secondary" value="Search" />
         </p>
     </form>
-	<form method="post">
-		<input type="submit" value="Add to Watchlist" />
-	</form>
 	@foreach (var item in Model.Movie)
 	{
-		<div class="card movie_card">
-			<img src="@item.Poster" class="card-img-top" alt="@item.Title">
-			<div class="card-body">
-				<i class="fas fa-play play_button" data-toggle="tooltip" data-placement="bottom" title="Play Trailer"></i>
-				<h5 class="card-title justify-content-around">@item.Title</h5>
-				<span class="movie_info">@item.Year</span>
-				<span class="movie_info float-right"><i class="fa-brands fa-imdb"></i>@item.imdbRating</span>
+		<div class="flex-container">
+			<div class="card movie_card">
+				<img src="@item.Poster" class="card-img-top" alt="@item.Title">
+				<div class="card-body">
+					<i class="fas fa-play play_button" data-toggle="tooltip" data-placement="bottom" title="Play Trailer"></i>
+					<h5 class="card-title justify-content-around">@item.Title</h5>
+					<span class="movie_info">@item.Year</span>
+					<span class="movie_info float-right"><i class="fa-brands fa-imdb"></i>@item.imdbRating</span>
+					<form method="post">
+						<input type="submit" class="btn btn-secondary" value="Add to Watchlist" />
+					</form>
+				</div>
 			</div>
-		</div>
+			<div>
+				<span class="movie-info text-light">
+					@item.Plot
+				</span>
+			</div>
+        </div>
 	}
 	
 </div>
