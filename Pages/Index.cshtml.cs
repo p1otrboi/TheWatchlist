@@ -21,5 +21,9 @@ namespace TheWatchlist.Pages
         {
             Movies = MovieService.GetMovies();
         }
+        public void OnPost()
+        {
+            Movies = MovieService.GetMovies();
+        }
     }
 }

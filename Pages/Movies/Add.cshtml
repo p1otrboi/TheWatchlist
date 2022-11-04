@@ -4,16 +4,29 @@
     ViewData["Title"] = "Search";
 }
 
-<div class="container align-content-center">
+<div class="container-lg">
     <h2 class="text-light">Search for a movie</h2>
-    <form>
+    <form method="get">
         <p>
             <input type="text" asp-for="SearchString" />
             <input type="submit" value="Search" />
         </p>
     </form>
-    <form method="post">
-        <input type="submit">
-    </form>
+	<form method="post">
+		<input type="submit" value="Add to Watchlist" />
+	</form>
+	@foreach (var item in Model.Movie)
+	{
+		<div class="card movie_card">
+			<img src="@item.Poster" class="card-img-top" alt="@item.Title">
+			<div class="card-body">
+				<i class="fas fa-play play_button" data-toggle="tooltip" data-placement="bottom" title="Play Trailer"></i>
+				<h5 class="card-title justify-content-around">@item.Title</h5>
+				<span class="movie_info">@item.Year</span>
+				<span class="movie_info float-right"><i class="fa-brands fa-imdb"></i>@item.imdbRating</span>
+			</div>
+		</div>
+	}
+	
 </div>
-
+    

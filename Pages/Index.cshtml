@@ -16,6 +16,19 @@
 				<span class="movie_info">@item.Year</span>
 				<span class="movie_info float-right"><i class="fa-brands fa-imdb"></i>@item.imdbRating</span>
 			</div>
+			<div class="flex-container">
+				@if (item.Seen == true)
+				{
+					<button type="button" class="btn btn-success">Seen</button>
+				}
+				else
+				{
+					<form method="post">
+						<button class="btn btn-secondary" id="@item.Title" type="submit" name="Seen" value="true">Mark as seen</button>
+					</form>
+				}
+				<button type="button" class="btn btn-danger">Delete</button>
+			</div>
 		</div>
 	}
 </div>

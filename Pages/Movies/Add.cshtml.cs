@@ -9,7 +9,7 @@ namespace TheWatchlist.Pages.Movies
     {
         private readonly ILogger<IndexModel> _logger;
         public JsonFileService MovieService;
-        public IEnumerable<Movie> Movies { get; private set; }
+        public IEnumerable<Movie> Movie { get; private set; }
 
         [BindProperty(SupportsGet = true)]
         public string ? SearchString { get; set; }
@@ -21,15 +21,18 @@ namespace TheWatchlist.Pages.Movies
         }
         public async Task OnGetAsync()
         {
-            //Movies = MovieService.GetMovies();
             if (!string.IsNullOrEmpty(SearchString))
             {
                 await JsonFileService.SearchMovie(SearchString);
             }
+            await Task.Delay(200);
+            Movie = MovieService.GetSearchedMovie();
         }
         public void OnPost()
         {
             MovieService.AddSearchedMovie();
+            Movie = MovieService.GetSearchedMovie();
+            Redirect("./Index");
         }
     }
 }
