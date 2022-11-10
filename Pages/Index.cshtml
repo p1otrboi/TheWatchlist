@@ -5,11 +5,13 @@
 }
 <script src="https://kit.fontawesome.com/8cafc277ac.js" crossorigin="anonymous"></script>
 
-<div class="center">
-	<form method="get">
+<div class="container center">
+	<p>
+	<form method="get" class="search-bar">
 			<input type="text" asp-for="SearchString" placeholder="Search for a movie..." />
-			<input type="submit" class="btn btn-secondary" value="Search" />
+			<button type="submit"><img src="~/images/searchicon.png"></button>
 	</form>
+	</p>
 </div>
 
 @try 

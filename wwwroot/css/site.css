@@ -91,3 +91,41 @@ body {
     position: absolute;
     margin-top: 300px;
 }
+
+.search-bar {
+    width: 100%;
+    max-width: 700px;
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    border-radius: 60px;
+    padding: 1px 2px;
+}
+
+.search-bar input {
+    background: transparent;
+    flex: 1;
+    border: 0;
+    outline: 0;
+    padding: 0px 0px;
+    padding-left: 25px;
+    font-size: 14px;
+    color: #cac7ff;
+}
+
+::placeholder {
+    color: #cac7ff; 
+}
+
+.searh-bar button img {
+    width: 25px;
+}
+
+.search-bar button {
+    border: 0;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    background: #58629b;
+    cursor: pointer;
+}
