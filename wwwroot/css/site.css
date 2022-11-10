@@ -1,77 +1,93 @@
-html {
-  font-size: 14px;
-}
-
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
 }
 
 body {
+    background: linear-gradient(to right, #434343 0%, black 160%);
+    font-family: "Poppins", sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     margin-bottom: 60px;
-    background: linear-gradient(to right, #434343 0%, black 100%);
-}
-img {
-    -webkit-user-drag: none;
-    -moz-user-drag: none;
-    -o-user-drag: none;
-    user-drag: none;
 }
 
-img {
-    pointer-events: none;
-}
-
-.movie_card {
-    padding: 0 !important;
-    width: 15rem;
-    margin: 14px;
+.moviecard {
+    width: 650px;
+    height: 350px;
+    display: flex;
+    overflow: hidden;
     border-radius: 10px;
-    box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.2), 0 4px 15px 0 rgba(0, 0, 0, 0.19);
+    background: rgba(0,0,0,0.50);
+    box-shadow: -5px 5px 10px rgba(0,0,0,0.7), 5px 5px 10px rgba(0,0,0,0.7);
 }
 
-.movie_card img {
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    height: 20rem;
+.moviecard-poster {
+    position: relative;
+    width: 250px;
+    overflow: hidden;
 }
 
-.movie_info {
-    color: #060612;
-    font-weight: bold;
-}
-
-.movie_info i {
-    font-size: 30px;
-}
-
-.card-title {
-    width: 80%;
-    height: 5rem;
-}
-
-.play_button {
-    background-color: #ff3d49;
+.moviecard-poster img {
     position: absolute;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    right: 20px;
-    bottom: 110px;
-    font-size: 27px;
-    padding-left: 21px;
-    padding-top: 16px;
-    color: #FFFFFF;
-    cursor: pointer;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
 }
+
+.moviecard-body {
+    width: 400px;
+    padding-top: 5px;
+    padding-left: 12px;
+    padding-right: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-size: 12px;
+    color: #bdb8b8;
+}
+
+.moviecard-title {
+    color: #e8e8e8;
+    font-size: 22px;
+}
+
+.moviecard-info {
+    margin-top: -20px;
+}
+
+.moviecard-body p span {
+    margin-right: 10px;
+}
+
+.moviecard-plot {
+    text-align: justify;
+    text-overflow: ellipsis;
+    overflow-wrap: break-word;
+    margin-bottom: 150px;
+}
+
 .flex-container {
     display: flex;
     flex-wrap: wrap;
+}
+.center {
+    display: flex;
     justify-content: center;
+    padding: 10px;
+}
+
+.moviecard-buttons {
+    display: inline-flex;
+    justify-content: space-around;
+    position: absolute;
+    margin-top: 300px;
 }
