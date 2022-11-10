@@ -5,88 +5,93 @@
 }
 <script src="https://kit.fontawesome.com/8cafc277ac.js" crossorigin="anonymous"></script>
 
-<div>
-	<h2 class="text-light">Search for a movie</h2>
+<div class="center">
 	<form method="get">
-		<p>
-			<input type="text" asp-for="SearchString" />
+			<input type="text" asp-for="SearchString" placeholder="Search for a movie..." />
 			<input type="submit" class="btn btn-secondary" value="Search" />
-		</p>
 	</form>
 </div>
-<div class="flex-container">
 
-	@try 
+@try 
+{
+	@foreach (var item in Model.SearchedMovie)
 	{
-		@foreach (var item in Model.SearchedMovie)
-		{
-			<div class="flex-container">
-				<div class="card movie_card">
-					<img src="@item.Poster" class="card-img-top" alt="@item.Title">
-					<div class="card-body">
-						<i class="fas fa-play play_button" data-toggle="tooltip" data-placement="bottom" title="Play Trailer"></i>
-						<h5 class="card-title justify-content-around">@item.Title</h5>
-						<span class="movie_info">@item.Year</span>
-						<span class="movie_info float-right"><i class="fa-brands fa-imdb"></i>@item.imdbRating</span>
-						<form method="post">
-							<input type="submit" class="btn btn-secondary" value="Add to Watchlist" asp-page-handler="AddToWatchlist" />
-						</form>
-					</div>
-				</div>
-				<div>
-					<h3 class="text-light">@item.Title ( @item.Year )</h3>
-					<p class="movie-info text-light">
-						Plot: @item.Plot
-					</p>
-					<p class="movie-info text-light">
-						Genre: @item.Genre
-					</p>
-					<p class="movie-info text-light">
-						Runtime: @item.Runtime
-					</p>
-					<p class="movie-info text-light">
-						Writer: @item.Writer
-					</p>
-				</div>
+		<div class="center">
+		<div class="moviecard">
+			<div class="moviecard-poster">
+				<img src="@item.Poster" alt="@item.Title">
 			</div>
-		}
-
-	}		
-	catch
-	{
-		@foreach (var item in Model.Movies)
-		{
-			<div class="card movie_card">
-				<img src="@item.Poster" class="card-img-top" alt="@item.Title">
-				<div class="card-body">
-					<i class="fas fa-play play_button" data-toggle="tooltip" data-placement="bottom" title="Play Trailer"></i>
-					<h5 class="card-title">@item.Title</h5>
-					<span class="movie_info">@item.Year</span>
-					<span class="movie_info float-right"><i class="fa-brands fa-imdb"></i>@item.imdbRating</span>
-				</div>
-				<div class="flex-container">
-					@if (item.Seen == true)
-					{
-						<form method="post">
-							<button class="btn btn-success" id="@item.Title" type="submit" name="Seen" value="@item.Title" asp-page-handler="Seen">Seen</button>
-						</form>
-					}
-					else
-					{
-						<form method="post">
-							<button class="btn btn-secondary" id="toggleseen" type="submit" name="Seen" value="@item.Title" asp-page-handler="Seen">Mark as seen</button>
-						</form>
-					}
+			<div class="moviecard-body">
+				<span class="moviecard-title">@item.Title</span>
+				<p>
+					<span>@item.Year</span>
+					<span>@item.Runtime</span>
+					<span>@item.Genre</span>
+				</p>
+				<p>
+					<span>IMDB: @item.imdbRating</span>
+					<span>Metascore: @item.Metascore</span>
+				</p>
+				<p class="moviecard-plot">
+					@item.Plot
+				</p>
+				<div class="moviecard-buttons">
 					<form method="post">
-						<button class="btn btn-danger" id="delete" type="submit" name="Delete" value="@item.Title" asp-page-handler="Delete">Delete</button>
+						<input type="submit" class="btn btn-secondary" value="Add to Watchlist" asp-page-handler="AddToWatchlist" />
 					</form>
 				</div>
-			</div>
-		}
+				</div>
+		</div>
+		</div>
 	}
+}		
+catch
+{
+	@foreach (var item in Model.Movies)
+	{
+		<div class="center">
+		<div class="moviecard">
+			<div class="moviecard-poster">
+				<img src="@item.Poster" alt="@item.Title">
+			</div>
+			<div class="moviecard-body">
+				<span class="moviecard-title">@item.Title</span>
+				<p>
+					<span>@item.Year</span>
+					<span>@item.Runtime</span>
+					<span>@item.Genre</span>
+				</p>
+				<p>
+					<span>IMDB: @item.imdbRating</span>
+					<span>Metascore: @item.Metascore</span>
+				</p>
+				<p class="moviecard-plot">
+					@item.Plot
+				</p>
+				<div class="moviecard-buttons">
+				@if (item.Seen == true)
+				{
+					<form method="post">
+						<button class="btn btn-success" id="@item.Title" type="submit" name="Seen" value="@item.Title" asp-page-handler="Seen">Seen</button>
+					</form>
+				}
+				else
+				{
+					<form method="post">
+						<button class="btn btn-secondary" id="toggleseen" type="submit" name="Seen" value="@item.Title" asp-page-handler="Seen">Mark as seen</button>
+					</form>
+				}
+				<form method="post">
+					<button class="btn btn-danger" id="delete" type="submit" name="Delete" value="@item.Title" asp-page-handler="Delete">Delete</button>
+				</form>
+				</div>
+			</div>
+		</div>
+		</div>
+	}
+}
 
-	
-</div>
+
 
 
 
